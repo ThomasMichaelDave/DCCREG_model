@@ -1,0 +1,80 @@
+output,key,value
+A,output,A: K_A -> G_eff
+A,rho,1.0
+A,gamma,1.0
+A,analytic_beta_coeff,0.07957747154594767
+A,beta_coeff_extrapolated,0.07905015592322025
+A,beta_coeff_rel_err,0.006626443545934429
+A,convergence,<list:4>
+A,converged,True
+A,ln_d_over_a,4.0
+A,K_A_over_rhoGamma2,0.316200623692881
+A,G_eff_times_rhoGamma2,3.16254910670663
+A,tier.beta_coeff,OC
+A,tier.K_A,OC value on IR identification (K_A~beta)
+A,tier.G_eff,IR
+A,reads,O(1)*rhoGamma^2 -> CONFIRMS K_A~beta and REFINES gravity strength; order-of-magnitude mismatch would FALSIFY the shared-parameter id.
+C,output,C: E(r) interaction law (lattice Green's function)
+C,n,512
+C,ln_form_beats_r2lnr,True
+C,ln_form_residual,0.0015967497700127183
+C,r2lnr_residual,0.03564539608170188
+C,G_slope_per_lnr,-0.08643376132867561
+C,G_slope_window_spread,0.0014670656184241702
+C,analytic_slope_per_lnr,-0.09188814923696534
+C,slope_rel_err,0.059358991922056265
+C,slope_note,"coefficient measured to ~10% (finite torus + discreteness; the asymptotic regime exceeds the torus). The ln r FORM is robust; the coefficient is approximate, not claimed beyond its window spread."
+C,E_r_coefficient_K_A_times_slope,-0.027330409240248845
+C,screening_length,
+C,tier.lnr_form,OC (robust)
+C,tier.coefficient,"OC (~10%, finite-size limited)"
+C,tier.defect-interaction id,IR
+C,reads,ln r form recovered on the real lattice -> CONFIRMS the v0.6 Einstein/Newton closure (check_02) with a finite lattice coefficient; r^2 ln r at large r would FALSIFY hexatic screening (not seen).
+B,output,B: defect spectrum + ground-state matter loop (decisive)
+B,model.beta_coeff,0.07905015592322025
+B,model.K_A,0.316200623692881
+B,model.ln_xi,4.0
+B,model.tol,0.1
+B,model.weights.w_tension,1.0
+B,model.weights.w_frank,1.0
+B,model.weights.w_commens,1.0
+B,model.weights.w_close,1.0
+B,spectrum,<list:21>
+B,ground_state.charge_deg,120.0
+B,ground_state.L,8
+B,ground_state.total_turns,1.0185760300002804
+B,ground_state.Tw,-1.0185759877143832
+B,ground_state.Wr,0.0
+B,ground_state.Lk,-1.0185759877143832
+B,ground_state.Lk_int,-1
+B,ground_state.closure_residual,0.01857598771438318
+B,ground_state.parity,odd
+B,ground_state.handedness,L
+B,ground_state.energy,0.7915108456303145
+B,ground_state.stable,True
+B,closure_structure.residuals.1,0.12732200155624362
+B,closure_structure.residuals.2,0.25464400088897227
+B,closure_structure.residuals.3,0.38196599993189656
+B,closure_structure.residuals.5,0.36339000022825796
+B,closure_structure.residuals.8,0.01857598771438318
+B,closure_structure.residuals.13,0.34481406576396023
+B,closure_structure.residuals.21,0.32623830083478955
+B,closure_structure.best_closure_depth,8
+B,closure_structure.best_closure_residual,0.01857598771438318
+B,closure_structure.closure_gap_factor,6.854117450651608
+B,closure_structure.strict_tol_window,<list:2>
+B,robustness_scan.regime,strict closure (genuine framed ribbon); energy weights varied 0.1x-10x
+B,robustness_scan.n_samples,400
+B,robustness_scan.ground_size_mode,8
+B,robustness_scan.size_robustness,1.0
+B,robustness_scan.ground_parity_mode,odd
+B,robustness_scan.parity_robustness,1.0
+B,robustness_scan.ground_handedness_mode,L
+B,robustness_scan.ground_charge_mode,120.0
+B,robustness_scan.charge_robustness,0.7175
+B,loose_closure_caveat,"loosening closure to tol>0.019 (admitting the poorly-closed L=1 loop, residual 0.127, parity even) changes the ground state — this is the bare-loop regime, not a genuine framed ribbon."
+B,verdict,"CONFIRM (matter gate): the UNIQUE genuine closure is Fibonacci depth L=8 (residual 0.019, 7x better than any other depth), |Lk|=1 ODD = spin-1/2, definite handedness 'L'. Size & parity robust across 100% of the energy-weight scan (strict-closure regime)."
+B,charge_fork,"Ground-state CHARGE is model-dependent: Frank self-energy favours 90 deg (smallest Omega^2), screw-commensuration favours 120 deg (C3//[1,1,1]). Reported as an open fork, NOT resolved — honest gap."
+B,tier.Lk/closure & energy ordering,OC
+B,tier.ribbon=matter particle,IR
+B,tier.SM quantum numbers,"RH (out of scope, V-§8)"

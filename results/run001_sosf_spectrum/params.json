@@ -1,0 +1,13 @@
+{
+  "run_id": "run001_sosf_spectrum",
+  "git_commit": "9b3de529a414d39ae3ea1dab46b8cf738db65aae",
+  "seed": 0,
+  "outputs": [
+    "A",
+    "B",
+    "C"
+  ],
+  "quick": false,
+  "ladder_passed": true,
+  "note": "A number is load-bearing only if ladder_passed is true (INTERPRETATION.md \u00a70)."
+}
