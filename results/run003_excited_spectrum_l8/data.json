@@ -1,0 +1,164 @@
+{
+  "closure_minima": [
+    {
+      "L": 8,
+      "Lk": 1,
+      "eps": 0.0186,
+      "spin": "1/2"
+    },
+    {
+      "L": 16,
+      "Lk": 2,
+      "eps": 0.0372,
+      "spin": "int"
+    },
+    {
+      "L": 24,
+      "Lk": 3,
+      "eps": 0.0557,
+      "spin": "1/2"
+    },
+    {
+      "L": 31,
+      "Lk": 4,
+      "eps": 0.053,
+      "spin": "int"
+    },
+    {
+      "L": 39,
+      "Lk": 5,
+      "eps": 0.0344,
+      "spin": "1/2"
+    }
+  ],
+  "ground_state": {
+    "L": 8,
+    "Omega": 120.0,
+    "Lk": 1,
+    "spin": "1/2",
+    "E": 12.103520667171395
+  },
+  "ground_gap": 5.0,
+  "spectrum_low": [
+    {
+      "L": 8,
+      "Omega": 120.0,
+      "Lk": 1,
+      "spin": "1/2",
+      "winding": 1,
+      "E": 12.103520667171395,
+      "fibonacci": true
+    },
+    {
+      "L": 8,
+      "Omega": 180.0,
+      "Lk": 1,
+      "spin": "1/2",
+      "winding": 1,
+      "E": 17.103520667171395,
+      "fibonacci": true
+    },
+    {
+      "L": 16,
+      "Omega": 120.0,
+      "Lk": 2,
+      "spin": "int",
+      "winding": 2,
+      "E": 20.41408266868558,
+      "fibonacci": false
+    },
+    {
+      "L": 16,
+      "Omega": 180.0,
+      "Lk": 2,
+      "spin": "int",
+      "winding": 2,
+      "E": 25.41408266868558,
+      "fibonacci": false
+    },
+    {
+      "L": 24,
+      "Omega": 120.0,
+      "Lk": 3,
+      "spin": "1/2",
+      "winding": 3,
+      "E": 28.93168600454256,
+      "fibonacci": false
+    },
+    {
+      "L": 24,
+      "Omega": 180.0,
+      "Lk": 3,
+      "spin": "1/2",
+      "winding": 3,
+      "E": 33.931686004542556,
+      "fibonacci": false
+    },
+    {
+      "L": 31,
+      "Omega": 120.0,
+      "Lk": 4,
+      "spin": "int",
+      "winding": 4,
+      "E": 35.84326879916399,
+      "fibonacci": false
+    },
+    {
+      "L": 31,
+      "Omega": 180.0,
+      "Lk": 4,
+      "spin": "int",
+      "winding": 4,
+      "E": 40.84326879916399,
+      "fibonacci": false
+    },
+    {
+      "L": 39,
+      "Omega": 120.0,
+      "Lk": 5,
+      "spin": "1/2",
+      "winding": 5,
+      "E": 43.35587238689266,
+      "fibonacci": false
+    },
+    {
+      "L": 39,
+      "Omega": 180.0,
+      "Lk": 5,
+      "spin": "1/2",
+      "winding": 5,
+      "E": 48.35587238689266,
+      "fibonacci": false
+    },
+    {
+      "L": 24,
+      "Omega": 120.0,
+      "Lk": 4,
+      "spin": "int",
+      "winding": 4,
+      "E": 295.4948320040378,
+      "fibonacci": false
+    },
+    {
+      "L": 16,
+      "Omega": 120.0,
+      "Lk": 3,
+      "spin": "1/2",
+      "winding": 3,
+      "E": 298.1228466683491,
+      "fibonacci": false
+    }
+  ],
+  "doublet": {
+    "present": false,
+    "writhe_split": 1222.2912360003368,
+    "reason": "global screw fixes chirality; +/- writhe and L/R handedness non-degenerate"
+  },
+  "ground_state_robust_pct": 100.0,
+  "first_excited_distribution": {
+    "L8_180_Lk1": 77,
+    "L16_120_Lk2": 47,
+    "L8_120_Lk2": 1
+  },
+  "verdict": "isolated spin-1/2 singlet; no doublet; no robust generation multiplet; recurring odd-winding fermionic harmonics are [RH]"
+}
