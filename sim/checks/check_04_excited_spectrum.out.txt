@@ -1,0 +1,82 @@
+====================================================================
+PART 1 -- screw-closure spectrum  [OC arithmetic]
+====================================================================
+s = (120/phi^2)/360 = 0.127322 turns/level ; 1/s = 7.8541 = 3 phi^2
+  L    Tw=sL  Lk*   resid  spin  fib  note
+  1   0.1273    0  0.1273   int    F  
+  2   0.2546    0  0.2546   int    F  
+  3   0.3820    0  0.3820   int    F  
+  5   0.6366    1  0.3634   1/2    F  
+  8   1.0186    1  0.0186   1/2    F  winding n=1
+ 13   1.6552    2  0.3448   int    F  
+ 16   2.0372    2  0.0372   int       winding n=2
+ 21   2.6738    3  0.3262   1/2    F  
+ 24   3.0557    3  0.0557   1/2       winding n=3
+ 31   3.9470    4  0.0530   int       winding n=4
+ 34   4.3289    4  0.3289   int    F  
+ 39   4.9656    5  0.0344   1/2       winding n=5
+
+The good closures (residual local minima) fall at the FUNDAMENTAL L=8
+and its winding HARMONICS L ~ 8,16,24,31,39 (multiples of 1/s=7.854),
+NOT at the higher Fibonacci numbers 13,21 (those close poorly). Spin
+parity follows the winding number n: odd n -> spin-1/2, even n -> boson.
+
+====================================================================
+PART 2 -- energy spectrum (default [IR] weights)  ground + excited
+====================================================================
+weights: {'w_len': 1.0, 'w_F': 4.0, 'w_W': 300.0}
+(spectrum built on the stable-closure depths L~8,16,24,31,39 + their
+ fixed-depth writhe excitations Lk*+-1; off-minimum depths relax away)
+rank   L  Omega  Lk  spin         E     dE_gs  comment
+   0   8    120   1   1/2    12.104     0.000  <-- GROUND (matches run002: L=8, 120deg, spin-1/2)
+   1   8    180   1   1/2    17.104     5.000  180deg charge channel (Frank gap, ~2.25x)
+   2  16    120   2   int    20.414     8.311  even-winding harmonic n=2 (boson)
+   3  16    180   2   int    25.414    13.311  180deg charge channel (Frank gap, ~2.25x)
+   4  24    120   3   1/2    28.932    16.828  odd-winding harmonic n=3 (spin-1/2, generation-like?)
+   5  24    180   3   1/2    33.932    21.828  180deg charge channel (Frank gap, ~2.25x)
+   6  31    120   4   int    35.843    23.740  even-winding harmonic n=4 (boson)
+   7  31    180   4   int    40.843    28.740  180deg charge channel (Frank gap, ~2.25x)
+   8  39    120   5   1/2    43.356    31.252  odd-winding harmonic n=5 (spin-1/2, generation-like?)
+   9  39    180   5   1/2    48.356    36.252  180deg charge channel (Frank gap, ~2.25x)
+  10  24    120   4   int   295.495   283.391  writhe excitation (Lk != Lk*) -- costly, high-lying
+  11  16    120   3   1/2   298.123   286.019  writhe excitation (Lk != Lk*) -- costly, high-lying
+
+Ground-state gap to first excited ribbon: dE = 5.000 (in w_len*length units, the line-tension quantum).
+
+====================================================================
+PART 3 -- doublet test: is the ground state degenerate?
+====================================================================
+(i) writhe-sign partners at L=8, 120deg:
+    Lk=+1: E=12.104  (Wr=-0.019)  <-- realized
+    Lk=-1: E=1234.395  (Wr=-2.019)  split dE=1222.291
+    => the fixed screw sense makes Lk=-1 cost ~1222 units;
+       NOT degenerate. No +/- writhe doublet.
+(ii) handedness: global screw sense is fixed (locked assumption);
+     a left- and right-handed ribbon are NOT both realized -> no L/R
+     parity doublet. Chirality lifts the degeneracy by construction.
+(iii) smallest energy split among the 6 lowest framed ribbons: 3.311 >> 0 -> no accidental near-degeneracy.
+
+====================================================================
+PART 4 -- robustness: vary weights 0.1x-10x, track ground + 1st excited
+====================================================================
+ground state = (L=8, 120deg, spin-1/2) in 125/125 = 100% of the weight scan  [robust -> isolated singlet]
+first-EXCITED ribbon across the same scan (it is NOT stable):
+    (L= 8, 180deg, Lk=1, 1/2)  in   62%
+    (L=16, 120deg, Lk=2, int)  in   38%
+    (L= 8, 120deg, Lk=2, int)  in    1%
+=> the FIRST EXCITED identity is weight-DEPENDENT (no single answer)
+   => the excited band is NOT a robust doublet or generation multiplet.
+
+====================================================================
+VERDICT
+====================================================================
+- GROUND STATE: isolated spin-1/2 singlet (L=8, 120deg, |Lk|=1),
+  robust across the weight scan; large closure gap below all others.
+- DOUBLET: NONE. The global screw (fixed chirality) lifts both the
+  +/- writhe and the L/R handedness degeneracies. No near-degenerate pair.
+- GENERATION TOWER: the same (spin-1/2, 120deg) quantum numbers DO recur
+  at odd-winding harmonics (n=1,3,5 -> L~8,24,39), interleaved with
+  even-winding bosons (n=2,4 -> L~16,31). But this is an INFINITE winding
+  ladder, not three replicas, and the low-excited ordering is weight-
+  dependent. The energetics do NOT support a clean 3-generation multiplet.
+  Any 'generation' reading is [RH], fenced (V-§8) -- NOT claimed.

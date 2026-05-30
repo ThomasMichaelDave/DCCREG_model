@@ -13,8 +13,9 @@ These scripts **verify specific computable pieces** of the construction. They ar
 | `check_01_calugareanu_framing.py` | Screw framing ⇒ ribbon; Lk = Tw + Wr (planar loop: Wr≈0, screw supplies integer Tw) | V-§3 | item 4 |
 | `check_02_hexatic_greens_function.py` | Hexatic disclination kernel = 2D Laplacian Green's fn (∫∇²(ln r/2π)=1.000) ⇒ Einstein/Newton form; solid r²ln r baseline | IV-§5.5, §3a | items 2 & 3 |
 | `check_03_joining_spectrum.py` | Octahedral charges {90,120,180}°; K_A~β scaling; Fibonacci spin-parity selection | IV-§3a, V-§2a, §6a | item 5 |
+| `check_04_excited_spectrum.py` | Excited/multiplet spectrum above the L=8 spin-½ ground state: closure harmonics, doublet test, generation test | V (matter sector) | builds on items 4 & 5 |
 
-Together they pre-populate **3 of the 5 rungs** of the validation ladder in `../README.md` (items 2, 3, 4, 5). The remaining real work — stable-loop **energies**, the ground-state matter loop, and the **numeric K_A** — is the open simulator target, not done here.
+`check_01`–`check_03` pre-populate **3 of the 5 rungs** of the validation ladder in `../README.md` (items 2, 3, 4, 5). `check_04` is a *post-ground-state* computation (run `results/run003_excited_spectrum_l8/`): it answers "doublet or generation tower above L=8?" — verdict: **isolated spin-½ singlet, no doublet, no robust generation multiplet** (see that run's `NOTES.md`). The remaining real work — stable-loop **energies in physical units** and the **numeric K_A** — is the open simulator target (the run002 `sim.run` harness), not on this branch.
 
 ## Reproduce
 

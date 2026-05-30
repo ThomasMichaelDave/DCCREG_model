@@ -1,0 +1,23 @@
+{
+  "seed": 0,
+  "git": "4c536b29693d514495306e014275d71a03fcc04e",
+  "s_turns_per_level": 0.12732200375003505,
+  "admissible_charges": [
+    120.0,
+    180.0
+  ],
+  "weights": {
+    "w_len": 1.0,
+    "w_F": 4.0,
+    "w_W": 300.0
+  },
+  "L_max": 40,
+  "Lk_max": 6,
+  "robustness_factors": [
+    0.1,
+    0.3,
+    1.0,
+    3.0,
+    10.0
+  ]
+}
