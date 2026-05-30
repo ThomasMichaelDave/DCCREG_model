@@ -1,0 +1,16 @@
+=== Power-law / form extraction (large r) ===
+Solid:   log-log slope of E_solid = 2.192  (~2 + log => 1/k^4)
+Hexatic: E_hex = (0.1592)*ln(r/a) + (-3.18e-16)  => 1/k^2
+         fitted coeff vs K_A/(2pi)=0.1592
+
+=== Green's-function / Einstein-form check ===
+∫_disk ∇²(ln r /2π) dA = 1.000   (expect ≈ 1)
+=> hexatic disclination kernel = 2D Laplacian Green's fn
+   = 2D Newtonian/Einstein potential. [OC, conditional on hexatic = IR]
+
+=== [WITHDRAWN — DO NOT USE] screening-crossover proxy ===
+  xi=  10.0: E_hex/E_solid(screened) at r=3xi = 1.04e-01  [original line wrongly claimed >>1]
+  xi=  50.0: E_hex/E_solid(screened) at r=3xi = 3.99e-03  [original line wrongly claimed >>1]
+  xi= 200.0: E_hex/E_solid(screened) at r=3xi = 2.40e-04  [original line wrongly claimed >>1]
+  ^ WITHDRAWN: wrong model (hexatic removes the confining term beyond
+    xi_+, it is not exp-damped). Power-law result above is unaffected.

@@ -1,0 +1,40 @@
+============================================================
+(A) ALLOWED DISCLINATION CHARGES = chiral octahedral group O
+============================================================
+|O| = 24  (expect 24, mirror-free, consistent with the screw)
+      0deg : 1 elements
+     90deg : 6 elements
+    120deg : 8 elements
+    180deg : 9 elements
+=> charges {90,120,180}deg; 120deg (C3 about [1,1,1]) = screw-aligned.
+
+============================================================
+(B) GRAVITY COEFFICIENT K_A ~ Block III line tension beta
+============================================================
+  ln(d/a)=2.0: beta/alpha=0.50  K_A~0.50  G_eff~2.00 [inverse units]
+  ln(d/a)=4.0: beta/alpha=1.00  K_A~1.00  G_eff~1.00 [inverse units]
+  ln(d/a)=6.0: beta/alpha=1.50  K_A~1.50  G_eff~0.67 [inverse units]
+  At isotropy ln(d/a)~4 (beta=alpha): K_A pinned in rho*Gamma^2.
+  Light isotropy + gravity strength + matter coupling = one parameter.
+  (Precise numeric coefficient needs the lattice sum = simulator.)
+
+============================================================
+(C) SPIN-PARITY SELECTION is Fibonacci (screw framing 45.8 deg/level)
+============================================================
+  screw = 120/phi^2 = 45.84 deg/level (irrational frac of 360)
+     L  totalTwist(deg)  Tw(turns)  nearest int
+     1             45.8      0.127            0
+     2             91.7      0.255            0
+     3            137.5      0.382            0
+     5            229.2      0.637            1
+     8            366.7      1.019            1
+    13            595.9      1.655            2
+    21            962.6      2.674            3
+  Closure selects loops; Fibonacci depths approach (half-)integers
+  fastest => spin-1/2 available & selectable. Lowest loop's actual
+  parity needs the simulator. [partial — honest gap]
+
+============================================================
+SIMULATOR BOUNDARY (NOT computed here): stable-loop energies; the
+lowest matter loop's exact spin & handedness; the numeric K_A.
+============================================================
