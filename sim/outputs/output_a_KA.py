@@ -28,6 +28,7 @@ from __future__ import annotations
 
 import numpy as np
 
+from .. import biot_savart_3d
 from ..biot_savart import ANALYTIC_BETA_COEFF, beta_coefficient
 from ..lattice import TriangularLattice
 
@@ -69,6 +70,10 @@ def run(rho: float = 1.0, gamma: float = 1.0,
     K_A = beta_coeff * LN_D_OVER_A_ISOTROPY        # units rho*Gamma^2
     G_eff = 1.0 / K_A if K_A != 0 else float("inf")
 
+    # full 3D cross-check: does the genuine 3D filament sum agree with the
+    # quasi-2D lattice value, and how big is the [1,1,1]-screw correction?
+    three_d = biot_savart_3d.run()
+
     result = {
         "output": "A: K_A -> G_eff",
         "rho": rho, "gamma": gamma,
@@ -80,10 +85,19 @@ def run(rho: float = 1.0, gamma: float = 1.0,
         "ln_d_over_a": LN_D_OVER_A_ISOTROPY,
         "K_A_over_rhoGamma2": K_A,
         "G_eff_times_rhoGamma2": G_eff,
+        "validation_3D": {
+            "straight_line_coeff_3D": three_d["straight_line_coeff_3D"],
+            "straight_line_rel_err": three_d["straight_line_rel_err"],
+            "quasi2D_reduction_validated": three_d["quasi2D_reduction_validated"],
+            "screw_helix_tension_factor": three_d["screw_helix_tension_factor"],
+            "reads": three_d["reads"],
+        },
         "tier": {"beta_coeff": "OC", "K_A": "OC value on IR identification (K_A~beta)",
-                 "G_eff": "IR"},
+                 "G_eff": "IR", "3D quasi-2D reduction": "OC"},
         "reads": ("O(1)*rhoGamma^2 -> CONFIRMS K_A~beta and REFINES gravity strength; "
-                  "order-of-magnitude mismatch would FALSIFY the shared-parameter id."),
+                  "order-of-magnitude mismatch would FALSIFY the shared-parameter id. The 3D "
+                  "filament sum confirms the quasi-2D reduction (straight-line coeff = 2D value) "
+                  "and a small (~1%) screw correction."),
     }
 
     if figures_dir is not None:

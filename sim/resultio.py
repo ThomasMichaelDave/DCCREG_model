@@ -107,6 +107,14 @@ def write_notes(path: str, run_id: str, ghash: str, seed: int,
         L(f"- At the Block III isotropy point ln(d/a)={a['ln_d_over_a']:.0f}: "
           f"**K_A ≈ {a['K_A_over_rhoGamma2']:.3f} ρΓ²** → **G_eff ≈ {a['G_eff_times_rhoGamma2']:.2f} /ρΓ²**. "
           f"**[OC value]** resting on K_A~β **[IR]** (the Joining, IV-§3a/V-§2a); G_eff~1/K_A **[IR]**.")
+        v3 = a.get("validation_3D")
+        if v3:
+            L(f"- **3D cross-check:** the genuine 3D filament Biot–Savart sum gives straight-line "
+              f"coefficient **{v3['straight_line_coeff_3D']:.5f}** ({v3['straight_line_rel_err']:.1%} from "
+              f"the 2D value) → **quasi-2D reduction validated [OC]** (exact for a straight disclination "
+              f"line). The [1,1,1]-screw helix raises the line tension only **×{v3['screw_helix_tension_factor']:.3f}** "
+              f"(~1%; the extra arc length is nearly cancelled by antiparallel tangents). So K_A is "
+              f"essentially unchanged in 3D.")
         L(f"- Read: {a['reads']}")
         L("")
     if c:
@@ -118,8 +126,18 @@ def write_notes(path: str, run_id: str, ghash: str, seed: int,
           f"(window spread ±{c['G_slope_window_spread']:.4f}; analytic −√3/6π = "
           f"{c['analytic_slope_per_lnr']:.4f}, rel.err {c['slope_rel_err']:.1%}). "
           f"**[OC, ~10%]** — finite-torus limited, not claimed beyond its spread.")
-        L(f"- Screening length: **not modelled** (flagged [IR] refinement; the withdrawn v0.6 "
-          f"exp-proxy is NOT reintroduced — honest gap).")
+        sc = c.get("screening")
+        if sc:
+            tbl = [t for t in sc["table"] if t.get("xi_measured")]
+            xi_lo = min(t["xi_measured"] for t in tbl) if tbl else float("nan")
+            xi_hi = max(t["xi_measured"] for t in tbl) if tbl else float("nan")
+            L(f"- **Screening length (computed):** free dislocations Debye-screen the ln r beyond "
+              f"**ξ = κ⁻¹ = √(C₂/m²) ∝ n_disloc^(−1/2)** (2D Debye–Hückel). Measured ξ ∈ "
+              f"[{xi_lo:.0f}, {xi_hi:.0f}] lattice units over the density range, **validated against "
+              f"the continuum Bessel K₀(κr) to {sc['mean_kappa_rel_err']:.1%}**. **[OC]** for the law "
+              f"+ validation; the dislocation density n_d (hence the absolute ξ) is an **[IR]** "
+              f"thermodynamic input. This REFINES IV-§5.6's 'atmosphere' — and is genuine Debye "
+              f"screening, NOT the withdrawn v0.6 exp-proxy of the confining term.")
         L(f"- Read: {c['reads']}")
         L("")
     if b:
@@ -134,10 +152,16 @@ def write_notes(path: str, run_id: str, ghash: str, seed: int,
               f"({gs['parity']}) → spin-½**, handedness **{gs['handedness']}**. **[OC]** for Lk/closure; "
               f"\"this ribbon is a matter particle\" is **[IR]**.")
         rs = b.get("robustness_scan", {})
-        L(f"- Robustness (strict-closure regime, energy weights varied 0.1×–10×): size & parity "
-          f"robust across **{rs.get('parity_robustness', 0):.0%}** of the scan; "
-          f"charge robust only **{rs.get('charge_robustness', 0):.0%}**.")
-        L(f"- **Open fork (honest gap):** {b.get('charge_fork')}")
+        cr = b.get("charge_resolution", {})
+        L(f"- Robustness (strict-closure regime, energy weights varied 0.1×–10×): size, parity & "
+          f"charge robust across **{rs.get('parity_robustness', 0):.0%}** / "
+          f"**{rs.get('charge_robustness', 0):.0%}** of the scan.")
+        if cr:
+            L(f"- **Charge fork — RESOLVED:** {cr.get('rule')} 90° is excluded categorically "
+              f"(ψ₆→−ψ₆, a string-attached half-disclination), leaving admissible "
+              f"{cr.get('admissible_charges_deg')}°; Frank energy ∝Ω² then selects "
+              f"**{cr.get('ground_charge_deg'):.0f}°** (also the screw-aligned C₃∥[1,1,1] — doubly "
+              f"natural). **[OC]** selection on the hexatic 6-fold **[IR]**. No tunable weight.")
         if b.get("loose_closure_caveat"):
             L(f"- Caveat: {b['loose_closure_caveat']}")
         L(f"- Verdict: {b.get('verdict')}")

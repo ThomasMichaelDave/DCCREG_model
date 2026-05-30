@@ -64,34 +64,52 @@ def framing(L: int) -> dict:
     }
 
 
-def frustration(omega_deg: float) -> float:
-    """Screw-commensuration cost: 120 deg (C3 about [1,1,1]) is screw-aligned
-    (zero frustration); other charges mismatch the screw period (120 deg).
-    Cost = squared sine of the half-mismatch to the nearest multiple of 120."""
-    m = omega_deg % 120.0
-    m = min(m, 120.0 - m)            # distance to nearest 120-multiple
-    return float(np.sin(np.radians(m))**2)
+HEXATIC_FOLD = 6                            # transverse order is 6-fold (hexatic)
+ELEMENTARY_DISCLINATION_DEG = 360.0 / HEXATIC_FOLD   # = 60 deg
+
+
+def hexatic_admissible(omega_deg: float, n: int = 720) -> tuple[bool, float]:
+    """Is a Frank angle Omega an admissible ISOLATED hexatic disclination?
+    The 6-fold bond-order parameter psi6 = exp(6 i theta) must return to itself
+    after winding theta by Omega around the core: exp(6 i Omega) = 1, i.e.
+    6*Omega = 0 (mod 360). 90 deg fails (6*90=540 -> psi6 -> -psi6, a
+    string-attached half-disclination); 120,180 pass. Computed, not asserted:
+    we wind theta and measure the residual phase of psi6."""
+    phi = np.linspace(0, 2 * np.pi, n, endpoint=True)
+    theta = np.radians(omega_deg) * phi / (2 * np.pi)   # bond angle winds by Omega
+    psi6 = np.exp(1j * HEXATIC_FOLD * theta)
+    residual = float(abs(np.angle(psi6[-1] / psi6[0])))  # 0 if single-valued
+    return (residual < 1e-6), residual
+
+
+def frank_energy_factor(omega_deg: float) -> float:
+    """Smooth Frank elastic self-energy factor ~ (Omega/2pi)^2 (favours small Omega)."""
+    return (omega_deg / 360.0) ** 2
 
 
 def energy(omega_deg: float, fr: dict, *, beta_coeff: float, K_A: float, ln_xi: float,
-           w_tension: float, w_frank: float, w_commens: float, w_close: float) -> float:
+           w_tension: float, w_frank: float, w_close: float) -> float:
     return (w_tension * beta_coeff * fr["L"]
-            + w_frank * K_A * (omega_deg / 360.0)**2 * ln_xi
-            + w_commens * frustration(omega_deg)
+            + w_frank * K_A * frank_energy_factor(omega_deg) * ln_xi
             + w_close * fr["closure_residual"])
 
 
 def build_spectrum(beta_coeff, K_A, ln_xi, weights, tol, frames) -> list[dict]:
     spectrum = []
     for omega in OCTA_CHARGES:
+        admissible, residual = hexatic_admissible(omega)
         for L in FIB_DEPTHS:
             fr = frames[L]
             E = energy(omega, fr, beta_coeff=beta_coeff, K_A=K_A, ln_xi=ln_xi, **weights)
             spectrum.append({
                 "charge_deg": omega,
+                "hexatic_admissible": admissible,   # 6-fold single-valuedness of psi6
+                "psi6_residual_phase": residual,
                 **fr,
                 "energy": float(E),
-                "stable": bool(fr["closure_residual"] < tol),
+                # a genuine isolated ground-state defect must be BOTH a good
+                # framed-ribbon closure AND an admissible hexatic disclination
+                "stable": bool(fr["closure_residual"] < tol and admissible),
             })
     spectrum.sort(key=lambda row: row["energy"])
     return spectrum
@@ -105,9 +123,16 @@ def ground_state(spectrum) -> dict | None:
 def run(beta_coeff: float = 0.0791, K_A: float = 0.3162, ln_xi: float = 4.0,
         tol: float = 0.10, figures_dir=None) -> dict:
     frames = {L: framing(L) for L in FIB_DEPTHS}   # Lk/closure: weight-independent, compute once
-    base_weights = dict(w_tension=1.0, w_frank=1.0, w_commens=1.0, w_close=1.0)
+    base_weights = dict(w_tension=1.0, w_frank=1.0, w_close=1.0)
     spectrum = build_spectrum(beta_coeff, K_A, ln_xi, base_weights, tol, frames)
     gs = ground_state(spectrum)
+
+    # charge fork (now resolved categorically by 6-fold hexatic admissibility):
+    # which octahedral Frank angles are single-valued (isolated) hexatic
+    # disclinations, and among those, Frank energy ~ Omega^2 picks the lowest.
+    admiss = {om: hexatic_admissible(om) for om in OCTA_CHARGES}
+    admissible_charges = [om for om in OCTA_CHARGES if admiss[om][0]]
+    charge_ground = min(admissible_charges, key=frank_energy_factor) if admissible_charges else None
 
     # closure structure: which depths are GENUINE closures? Report the residual
     # gap that makes the strict criterion principled, not arbitrary.
@@ -132,7 +157,6 @@ def run(beta_coeff: float = 0.0791, K_A: float = 0.3162, ln_xi: float = 4.0,
         w = dict(
             w_tension=float(10**rng.uniform(-1, 1)),
             w_frank=float(10**rng.uniform(-1, 1)),
-            w_commens=float(10**rng.uniform(-1, 1)),
             w_close=float(10**rng.uniform(-0.5, 1.5)),
         )
         t = float(rng.uniform(max(0.03, residuals[best_closure] * 1.5), strict_tol_max))
@@ -204,10 +228,24 @@ def run(beta_coeff: float = 0.0791, K_A: float = 0.3162, ln_xi: float = 4.0,
         },
         "loose_closure_caveat": loose_caveat,
         "verdict": verdict,
-        "charge_fork": ("Ground-state CHARGE is model-dependent: Frank self-energy favours 90 deg "
-                        "(smallest Omega^2), screw-commensuration favours 120 deg (C3//[1,1,1]). "
-                        "Reported as an open fork, NOT resolved — honest gap."),
-        "tier": {"Lk/closure & energy ordering": "OC", "ribbon=matter particle": "IR",
+        "charge_resolution": {
+            "rule": ("Admissible isolated hexatic disclination <=> psi6=exp(6 i theta) single-valued "
+                     "<=> 6*Omega = 0 (mod 360) <=> Omega is a multiple of 60 deg."),
+            "admissibility": {f"{om:.0f}": {"admissible": admiss[om][0],
+                                            "psi6_residual_phase": admiss[om][1]}
+                              for om in OCTA_CHARGES},
+            "admissible_charges_deg": admissible_charges,
+            "ground_charge_deg": charge_ground,
+            "resolved": ("FORK RESOLVED: 90 deg is NOT an admissible isolated hexatic disclination "
+                         "(6*90=540, psi6 -> -psi6: a string-attached half-disclination, extensive "
+                         "energy), so it is excluded categorically -- NOT by a tunable weight. Among "
+                         "the admissible {120,180} deg, Frank energy ~ Omega^2 selects 120 deg, which "
+                         "is ALSO the screw-aligned C3//[1,1,1] -- doubly natural."),
+            "scan_charge_robustness": charge_robustness,   # should now be ~1.0 (120 deg)
+        },
+        "tier": {"Lk/closure & energy ordering": "OC",
+                 "6-fold disclination admissibility (charge selection)": "OC (rests on hexatic 6-fold = IR)",
+                 "ribbon=matter particle": "IR",
                  "SM quantum numbers": "RH (out of scope, V-§8)"},
     }
     if figures_dir is not None:
