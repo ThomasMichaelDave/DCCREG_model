@@ -1,0 +1,17 @@
+output,key,value
+run004,setup.E_A,12.103520667171395
+run004,setup.E_B,12.103520667171395
+run004,setup.coupling_unit.Lk_AB_linked,-0.9999168604212927
+run004,setup.coupling_unit.Lk_AB_unlinked,0.0
+run004,setup.coupling_unit.gamma_A_gamma_B,-1.0
+run004,setup.coupling_unit.M0,-1.0
+run004,setup.excited_gap,5.0
+run004,J_scan,<list:25>
+run004,verdict.branch,B-YES
+run004,verdict.why,"E_A=E_B EXACTLY (mirror degeneracy of the (Lk-sL)^2 closure on the two opposite-screw sublattices) [OC], and the nonzero mirror-symmetric mutual-helicity coupling binds them into a bonding/antibonding pair. The mixed eigenstates carry net Lk=0 (non-chiral) -> the A<->B mixing IS a Dirac mass term. At natural J the pair is near-degenerate and low-lying (gap < the first-excited gap) and the bonding state is bound below E_0. The 'missing partner' was on the other sublattice; the fixed-GLOBAL-chirality axiom SURVIVES (local dual structure supplies both chiralities). CAVEAT: the mass MAGNITUDE scales with J and is not fixed without run002's K_A units (brief §6)."
+run004,verdict.degenerate,True
+run004,verdict.coupled,True
+run004,verdict.near_degenerate_at_natural_J,True
+run004,verdict.bound_at_natural_J,True
+run004,verdict.dirac_mass_signature_netLk0,True
+run004,verdict.edge_only,False

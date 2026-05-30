@@ -1,0 +1,14 @@
+{
+  "run_id": "run004_dirac_pairing",
+  "git_commit": "9887fba6f155944c6ed26bedd35796f1dcac32d5",
+  "seed": 0,
+  "s": 0.12732200375003505,
+  "L_ground": 8,
+  "weights": {
+    "w_len": 1.0,
+    "w_F": 4.0,
+    "w_W": 300.0
+  },
+  "ladder_passed": true,
+  "branch": "B-YES"
+}

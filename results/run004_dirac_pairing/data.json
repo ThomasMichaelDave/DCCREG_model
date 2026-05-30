@@ -1,0 +1,252 @@
+{
+  "run004": {
+    "setup": {
+      "E_A": 12.103520667171395,
+      "E_B": 12.103520667171395,
+      "coupling_unit": {
+        "Lk_AB_linked": -0.9999168604212927,
+        "Lk_AB_unlinked": 0.0,
+        "gamma_A_gamma_B": -1.0,
+        "M0": -1.0
+      },
+      "excited_gap": 5.0
+    },
+    "J_scan": [
+      {
+        "J": 0.1,
+        "t": -0.1,
+        "bonding": 12.003520667171394,
+        "antibonding": 12.203520667171395,
+        "gap": 0.20000000000000107,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 0.12115276586285885,
+        "t": -0.12115276586285885,
+        "bonding": 11.982367901308535,
+        "antibonding": 12.224673433034255,
+        "gap": 0.24230553172571945,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 0.14677992676220694,
+        "t": -0.14677992676220694,
+        "bonding": 11.956740740409188,
+        "antibonding": 12.250300593933602,
+        "gap": 0.29355985352441394,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 0.1778279410038923,
+        "t": -0.1778279410038923,
+        "bonding": 11.925692726167503,
+        "antibonding": 12.281348608175287,
+        "gap": 0.35565588200778464,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 0.21544346900318834,
+        "t": -0.21544346900318834,
+        "bonding": 11.888077198168206,
+        "antibonding": 12.318964136174584,
+        "gap": 0.43088693800637756,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 0.26101572156825364,
+        "t": -0.26101572156825364,
+        "bonding": 11.84250494560314,
+        "antibonding": 12.36453638873965,
+        "gap": 0.522031443136509,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 0.31622776601683794,
+        "t": -0.31622776601683794,
+        "bonding": 11.787292901154558,
+        "antibonding": 12.419748433188232,
+        "gap": 0.6324555320336742,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 0.3831186849557287,
+        "t": -0.3831186849557287,
+        "bonding": 11.720401982215664,
+        "antibonding": 12.486639352127124,
+        "gap": 0.76623736991146,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 0.46415888336127786,
+        "t": -0.46415888336127786,
+        "bonding": 11.639361783810116,
+        "antibonding": 12.567679550532674,
+        "gap": 0.9283177667225573,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 0.5623413251903491,
+        "t": -0.5623413251903491,
+        "bonding": 11.541179341981046,
+        "antibonding": 12.665861992361744,
+        "gap": 1.1246826503806986,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 0.6812920690579611,
+        "t": -0.6812920690579611,
+        "bonding": 11.422228598113435,
+        "antibonding": 12.784812736229355,
+        "gap": 1.3625841381159205,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 0.8254041852680184,
+        "t": -0.8254041852680184,
+        "bonding": 11.278116481903377,
+        "antibonding": 12.928924852439414,
+        "gap": 1.650808370536037,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 1.0,
+        "t": -1.0,
+        "bonding": 11.103520667171395,
+        "antibonding": 13.103520667171395,
+        "gap": 2.0,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 1.2115276586285881,
+        "t": -1.2115276586285881,
+        "bonding": 10.891993008542807,
+        "antibonding": 13.315048325799983,
+        "gap": 2.4230553172571767,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 1.467799267622069,
+        "t": -1.467799267622069,
+        "bonding": 10.635721399549327,
+        "antibonding": 13.571319934793465,
+        "gap": 2.9355985352441376,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 1.7782794100389228,
+        "t": -1.7782794100389228,
+        "bonding": 10.32524125713247,
+        "antibonding": 13.881800077210318,
+        "gap": 3.556558820077848,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 2.1544346900318834,
+        "t": -2.1544346900318834,
+        "bonding": 9.949085977139513,
+        "antibonding": 14.25795535720328,
+        "gap": 4.308869380063767,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 2.610157215682536,
+        "t": -2.610157215682536,
+        "bonding": 9.493363451488861,
+        "antibonding": 14.713677882853931,
+        "gap": 5.22031443136507,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 3.1622776601683795,
+        "t": -3.1622776601683795,
+        "bonding": 8.941243007003015,
+        "antibonding": 15.265798327339775,
+        "gap": 6.32455532033676,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 3.831186849557287,
+        "t": -3.831186849557287,
+        "bonding": 8.272333817614108,
+        "antibonding": 15.934707516728682,
+        "gap": 7.662373699114575,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 4.6415888336127775,
+        "t": -4.6415888336127775,
+        "bonding": 7.4619318335586176,
+        "antibonding": 16.745109500784174,
+        "gap": 9.283177667225557,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 5.62341325190349,
+        "t": -5.62341325190349,
+        "bonding": 6.480107415267906,
+        "antibonding": 17.726933919074884,
+        "gap": 11.246826503806979,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 6.812920690579611,
+        "t": -6.812920690579611,
+        "bonding": 5.290599976591784,
+        "antibonding": 18.916441357751005,
+        "gap": 13.625841381159221,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 8.254041852680182,
+        "t": -8.254041852680182,
+        "bonding": 3.8494788144912135,
+        "antibonding": 20.357562519851577,
+        "gap": 16.508083705360363,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      },
+      {
+        "J": 10.0,
+        "t": -10.0,
+        "bonding": 2.103520667171395,
+        "antibonding": 22.103520667171395,
+        "gap": 20.0,
+        "net_Lk_bonding": 0.0,
+        "net_Lk_antibonding": 0.0
+      }
+    ],
+    "verdict": {
+      "branch": "B-YES",
+      "why": "E_A=E_B EXACTLY (mirror degeneracy of the (Lk-sL)^2 closure on the two opposite-screw sublattices) [OC], and the nonzero mirror-symmetric mutual-helicity coupling binds them into a bonding/antibonding pair. The mixed eigenstates carry net Lk=0 (non-chiral) -> the A<->B mixing IS a Dirac mass term. At natural J the pair is near-degenerate and low-lying (gap < the first-excited gap) and the bonding state is bound below E_0. The 'missing partner' was on the other sublattice; the fixed-GLOBAL-chirality axiom SURVIVES (local dual structure supplies both chiralities). CAVEAT: the mass MAGNITUDE scales with J and is not fixed without run002's K_A units (brief \u00a76).",
+      "degenerate": true,
+      "coupled": true,
+      "near_degenerate_at_natural_J": true,
+      "bound_at_natural_J": true,
+      "dirac_mass_signature_netLk0": true,
+      "edge_only": false
+    }
+  }
+}
