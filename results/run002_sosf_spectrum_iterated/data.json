@@ -1,0 +1,548 @@
+{
+  "A": {
+    "output": "A: K_A -> G_eff",
+    "rho": 1.0,
+    "gamma": 1.0,
+    "analytic_beta_coeff": 0.07957747154594767,
+    "beta_coeff_extrapolated": 0.07905015592322025,
+    "beta_coeff_rel_err": 0.006626443545934429,
+    "convergence": [
+      {
+        "d": 1.0,
+        "beta_coeff": 0.07760582414044961,
+        "rel_err_vs_analytic": 0.02477645201832831
+      },
+      {
+        "d": 0.5,
+        "beta_coeff": 0.07840136994172456,
+        "rel_err_vs_analytic": 0.014779328638810032
+      },
+      {
+        "d": 0.25,
+        "beta_coeff": 0.07893998753630871,
+        "rel_err_vs_analytic": 0.008010860325850935
+      },
+      {
+        "d": 0.125,
+        "beta_coeff": 0.07924837863793541,
+        "rel_err_vs_analytic": 0.004135503448639341
+      }
+    ],
+    "converged": true,
+    "ln_d_over_a": 4.0,
+    "K_A_over_rhoGamma2": 0.316200623692881,
+    "G_eff_times_rhoGamma2": 3.16254910670663,
+    "validation_3D": {
+      "straight_line_coeff_3D": 0.07881141259090622,
+      "straight_line_rel_err": 0.009626580741499555,
+      "quasi2D_reduction_validated": true,
+      "screw_helix_tension_factor": 1.0136265059135783,
+      "reads": "straight-line 3D coeff = 2D value -> quasi-2D reduction is EXACT for a straight disclination line, so the gravity K_A is unchanged in 3D [OC]. The screw makes a matter ribbon's centerline helical, carrying a geometric tension factor ~1.01x (relevant to Output B's ribbon, not to gravity K_A)."
+    },
+    "tier": {
+      "beta_coeff": "OC",
+      "K_A": "OC value on IR identification (K_A~beta)",
+      "G_eff": "IR",
+      "3D quasi-2D reduction": "OC"
+    },
+    "reads": "O(1)*rhoGamma^2 -> CONFIRMS K_A~beta and REFINES gravity strength; order-of-magnitude mismatch would FALSIFY the shared-parameter id. The 3D filament sum confirms the quasi-2D reduction (straight-line coeff = 2D value) and a small (~1%) screw correction."
+  },
+  "C": {
+    "output": "C: E(r) interaction law (lattice Green's function)",
+    "n": 512,
+    "ln_form_beats_r2lnr": true,
+    "ln_form_residual": 0.0015967497700127183,
+    "r2lnr_residual": 0.03564539608170188,
+    "G_slope_per_lnr": -0.08643376132867561,
+    "G_slope_window_spread": 0.0014670656184241702,
+    "analytic_slope_per_lnr": -0.09188814923696534,
+    "slope_rel_err": 0.059358991922056265,
+    "slope_note": "coefficient measured to ~10% (finite torus + discreteness; the asymptotic regime exceeds the torus). The ln r FORM is robust; the coefficient is approximate, not claimed beyond its window spread.",
+    "E_r_coefficient_K_A_times_slope": -0.027330409240248845,
+    "screening": {
+      "model": "(-L + m2) G = delta; m2 ~ dislocation density n_d (2D Debye relation)",
+      "table": [
+        {
+          "m2": 0.02,
+          "kappa_pred": 0.11547005383792516,
+          "xi_pred": 8.660254037844386,
+          "kappa_measured": 0.11364050989582729,
+          "xi_measured": 8.799678925382212,
+          "kappa_rel_err": 0.015844315311966856
+        },
+        {
+          "m2": 0.01,
+          "kappa_pred": 0.08164965809277261,
+          "xi_pred": 12.24744871391589,
+          "kappa_measured": 0.0803978884288424,
+          "xi_measured": 12.438137612097462,
+          "kappa_rel_err": 0.015330984760620881
+        },
+        {
+          "m2": 0.005,
+          "kappa_pred": 0.05773502691896258,
+          "xi_pred": 17.32050807568877,
+          "kappa_measured": 0.056822109725954896,
+          "xi_measured": 17.598783375394902,
+          "kappa_rel_err": 0.01581218961392474
+        },
+        {
+          "m2": 0.002,
+          "kappa_pred": 0.03651483716701107,
+          "xi_pred": 27.386127875258307,
+          "kappa_measured": 0.03594199206641056,
+          "xi_measured": 27.822609224115485,
+          "kappa_rel_err": 0.01568800917776095
+        },
+        {
+          "m2": 0.001,
+          "kappa_pred": 0.025819888974716113,
+          "xi_pred": 38.72983346207417,
+          "kappa_measured": 0.02518665354200168,
+          "xi_measured": 39.70356753954564,
+          "kappa_rel_err": 0.024525102851314467
+        }
+      ],
+      "law": "xi = 1/kappa = sqrt(C2/m2) ~ n_d^(-1/2)  (2D Debye-Huckel)",
+      "validated_against": "continuum Bessel K0(kappa r); kappa_pred = sqrt(m2/C2), C2=3/2",
+      "mean_kappa_rel_err": 0.01744012034311758,
+      "tier": "OC for the screened Green's function + K0 validation + the n_d^(-1/2) law; the value of n_d (hence kappa) is an IR thermodynamic input, not fixed here."
+    },
+    "tier": {
+      "lnr_form": "OC (robust)",
+      "coefficient": "OC (~10%, finite-size limited)",
+      "screening_law": "OC (Debye, ~2%); n_d input is IR",
+      "defect-interaction id": "IR"
+    },
+    "reads": "ln r form recovered on the real lattice -> CONFIRMS the v0.6 Einstein/Newton closure (check_02) with a finite lattice coefficient; r^2 ln r at large r would FALSIFY hexatic screening (not seen). Free dislocations Debye-screen the ln r beyond xi=kappa^-1 ~ n_d^(-1/2) (validated vs K0), REFINING IV-\u00a75.6's 'atmosphere'."
+  },
+  "B": {
+    "output": "B: defect spectrum + ground-state matter loop (decisive)",
+    "model": {
+      "beta_coeff": 0.07905015592322025,
+      "K_A": 0.316200623692881,
+      "ln_xi": 4.0,
+      "tol": 0.1,
+      "weights": {
+        "w_tension": 1.0,
+        "w_frank": 1.0,
+        "w_close": 1.0
+      }
+    },
+    "spectrum": [
+      {
+        "charge_deg": 90.0,
+        "hexatic_admissible": false,
+        "psi6_residual_phase": 3.1415926535897927,
+        "L": 1,
+        "total_turns": 0.12732200375003505,
+        "Tw": -0.12732200155624362,
+        "Wr": 0.0,
+        "Lk": -0.12732200155624362,
+        "Lk_int": 0,
+        "closure_residual": 0.12732200155624362,
+        "parity": "even",
+        "handedness": "L",
+        "energy": 0.2854223134026841,
+        "stable": false
+      },
+      {
+        "charge_deg": 120.0,
+        "hexatic_admissible": true,
+        "psi6_residual_phase": 4.898587196589413e-16,
+        "L": 1,
+        "total_turns": 0.12732200375003505,
+        "Tw": -0.12732200155624362,
+        "Wr": 0.0,
+        "Lk": -0.12732200155624362,
+        "Lk_int": 0,
+        "closure_residual": 0.12732200155624362,
+        "parity": "even",
+        "handedness": "L",
+        "energy": 0.3469057680096332,
+        "stable": false
+      },
+      {
+        "charge_deg": 90.0,
+        "hexatic_admissible": false,
+        "psi6_residual_phase": 3.1415926535897927,
+        "L": 2,
+        "total_turns": 0.2546440075000701,
+        "Tw": -0.25464400088897227,
+        "Wr": 0.0,
+        "Lk": -0.25464400088897227,
+        "Lk_int": 0,
+        "closure_residual": 0.25464400088897227,
+        "parity": "even",
+        "handedness": "L",
+        "energy": 0.491794468658633,
+        "stable": false
+      },
+      {
+        "charge_deg": 180.0,
+        "hexatic_admissible": true,
+        "psi6_residual_phase": 7.347880794884119e-16,
+        "L": 1,
+        "total_turns": 0.12732200375003505,
+        "Tw": -0.12732200155624362,
+        "Wr": 0.0,
+        "Lk": -0.12732200155624362,
+        "Lk_int": 0,
+        "closure_residual": 0.12732200155624362,
+        "parity": "even",
+        "handedness": "L",
+        "energy": 0.5225727811723448,
+        "stable": false
+      },
+      {
+        "charge_deg": 120.0,
+        "hexatic_admissible": true,
+        "psi6_residual_phase": 4.898587196589413e-16,
+        "L": 2,
+        "total_turns": 0.2546440075000701,
+        "Tw": -0.25464400088897227,
+        "Wr": 0.0,
+        "Lk": -0.25464400088897227,
+        "Lk_int": 0,
+        "closure_residual": 0.25464400088897227,
+        "parity": "even",
+        "handedness": "L",
+        "energy": 0.553277923265582,
+        "stable": false
+      },
+      {
+        "charge_deg": 90.0,
+        "hexatic_admissible": false,
+        "psi6_residual_phase": 3.1415926535897927,
+        "L": 3,
+        "total_turns": 0.38196601125010515,
+        "Tw": -0.38196599993189656,
+        "Wr": 0.0,
+        "Lk": -0.38196599993189656,
+        "Lk_int": 0,
+        "closure_residual": 0.38196599993189656,
+        "parity": "even",
+        "handedness": "L",
+        "energy": 0.6981666236247775,
+        "stable": false
+      },
+      {
+        "charge_deg": 180.0,
+        "hexatic_admissible": true,
+        "psi6_residual_phase": 7.347880794884119e-16,
+        "L": 2,
+        "total_turns": 0.2546440075000701,
+        "Tw": -0.25464400088897227,
+        "Wr": 0.0,
+        "Lk": -0.25464400088897227,
+        "Lk_int": 0,
+        "closure_residual": 0.25464400088897227,
+        "parity": "even",
+        "handedness": "L",
+        "energy": 0.7289449364282938,
+        "stable": false
+      },
+      {
+        "charge_deg": 90.0,
+        "hexatic_admissible": false,
+        "psi6_residual_phase": 3.1415926535897927,
+        "L": 8,
+        "total_turns": 1.0185760300002804,
+        "Tw": -1.0185759877143832,
+        "Wr": 0.0,
+        "Lk": -1.0185759877143832,
+        "Lk_int": -1,
+        "closure_residual": 0.01857598771438318,
+        "parity": "odd",
+        "handedness": "L",
+        "energy": 0.7300273910233654,
+        "stable": false
+      },
+      {
+        "charge_deg": 120.0,
+        "hexatic_admissible": true,
+        "psi6_residual_phase": 4.898587196589413e-16,
+        "L": 3,
+        "total_turns": 0.38196601125010515,
+        "Tw": -0.38196599993189656,
+        "Wr": 0.0,
+        "Lk": -0.38196599993189656,
+        "Lk_int": 0,
+        "closure_residual": 0.38196599993189656,
+        "parity": "even",
+        "handedness": "L",
+        "energy": 0.7596500782317266,
+        "stable": false
+      },
+      {
+        "charge_deg": 120.0,
+        "hexatic_admissible": true,
+        "psi6_residual_phase": 4.898587196589413e-16,
+        "L": 8,
+        "total_turns": 1.0185760300002804,
+        "Tw": -1.0185759877143832,
+        "Wr": 0.0,
+        "Lk": -1.0185759877143832,
+        "Lk_int": -1,
+        "closure_residual": 0.01857598771438318,
+        "parity": "odd",
+        "handedness": "L",
+        "energy": 0.7915108456303145,
+        "stable": true
+      },
+      {
+        "charge_deg": 90.0,
+        "hexatic_admissible": false,
+        "psi6_residual_phase": 3.1415926535897927,
+        "L": 5,
+        "total_turns": 0.6366100187501753,
+        "Tw": -0.636609999771742,
+        "Wr": 0.0,
+        "Lk": -0.636609999771742,
+        "Lk_int": -1,
+        "closure_residual": 0.36339000022825796,
+        "parity": "odd",
+        "handedness": "L",
+        "energy": 0.8376909357675795,
+        "stable": false
+      },
+      {
+        "charge_deg": 120.0,
+        "hexatic_admissible": true,
+        "psi6_residual_phase": 4.898587196589413e-16,
+        "L": 5,
+        "total_turns": 0.6366100187501753,
+        "Tw": -0.636609999771742,
+        "Wr": 0.0,
+        "Lk": -0.636609999771742,
+        "Lk_int": -1,
+        "closure_residual": 0.36339000022825796,
+        "parity": "odd",
+        "handedness": "L",
+        "energy": 0.8991743903745285,
+        "stable": false
+      },
+      {
+        "charge_deg": 180.0,
+        "hexatic_admissible": true,
+        "psi6_residual_phase": 7.347880794884119e-16,
+        "L": 3,
+        "total_turns": 0.38196601125010515,
+        "Tw": -0.38196599993189656,
+        "Wr": 0.0,
+        "Lk": -0.38196599993189656,
+        "Lk_int": 0,
+        "closure_residual": 0.38196599993189656,
+        "parity": "even",
+        "handedness": "L",
+        "energy": 0.9353170913944382,
+        "stable": false
+      },
+      {
+        "charge_deg": 180.0,
+        "hexatic_admissible": true,
+        "psi6_residual_phase": 7.347880794884119e-16,
+        "L": 8,
+        "total_turns": 1.0185760300002804,
+        "Tw": -1.0185759877143832,
+        "Wr": 0.0,
+        "Lk": -1.0185759877143832,
+        "Lk_int": -1,
+        "closure_residual": 0.01857598771438318,
+        "parity": "odd",
+        "handedness": "L",
+        "energy": 0.9671778587930262,
+        "stable": true
+      },
+      {
+        "charge_deg": 180.0,
+        "hexatic_admissible": true,
+        "psi6_residual_phase": 7.347880794884119e-16,
+        "L": 5,
+        "total_turns": 0.6366100187501753,
+        "Tw": -0.636609999771742,
+        "Wr": 0.0,
+        "Lk": -0.636609999771742,
+        "Lk_int": -1,
+        "closure_residual": 0.36339000022825796,
+        "parity": "odd",
+        "handedness": "L",
+        "energy": 1.0748414035372402,
+        "stable": false
+      },
+      {
+        "charge_deg": 90.0,
+        "hexatic_admissible": false,
+        "psi6_residual_phase": 3.1415926535897927,
+        "L": 13,
+        "total_turns": 1.6551860487504557,
+        "Tw": -1.6551859342360398,
+        "Wr": 0.0,
+        "Lk": -1.6551859342360398,
+        "Lk_int": -2,
+        "closure_residual": 0.34481406576396023,
+        "parity": "even",
+        "handedness": "L",
+        "energy": 1.4515162486890436,
+        "stable": false
+      },
+      {
+        "charge_deg": 120.0,
+        "hexatic_admissible": true,
+        "psi6_residual_phase": 4.898587196589413e-16,
+        "L": 13,
+        "total_turns": 1.6551860487504557,
+        "Tw": -1.6551859342360398,
+        "Wr": 0.0,
+        "Lk": -1.6551859342360398,
+        "Lk_int": -2,
+        "closure_residual": 0.34481406576396023,
+        "parity": "even",
+        "handedness": "L",
+        "energy": 1.5129997032959928,
+        "stable": false
+      },
+      {
+        "charge_deg": 180.0,
+        "hexatic_admissible": true,
+        "psi6_residual_phase": 7.347880794884119e-16,
+        "L": 13,
+        "total_turns": 1.6551860487504557,
+        "Tw": -1.6551859342360398,
+        "Wr": 0.0,
+        "Lk": -1.6551859342360398,
+        "Lk_int": -2,
+        "closure_residual": 0.34481406576396023,
+        "parity": "even",
+        "handedness": "L",
+        "energy": 1.6886667164587044,
+        "stable": false
+      },
+      {
+        "charge_deg": 90.0,
+        "hexatic_admissible": false,
+        "psi6_residual_phase": 3.1415926535897927,
+        "L": 21,
+        "total_turns": 2.673762078750736,
+        "Tw": -2.6737616991652104,
+        "Wr": 0.0,
+        "Lk": -2.6737616991652104,
+        "Lk_int": -3,
+        "closure_residual": 0.32623830083478955,
+        "parity": "odd",
+        "handedness": "L",
+        "energy": 2.065341731145635,
+        "stable": false
+      },
+      {
+        "charge_deg": 120.0,
+        "hexatic_admissible": true,
+        "psi6_residual_phase": 4.898587196589413e-16,
+        "L": 21,
+        "total_turns": 2.673762078750736,
+        "Tw": -2.6737616991652104,
+        "Wr": 0.0,
+        "Lk": -2.6737616991652104,
+        "Lk_int": -3,
+        "closure_residual": 0.32623830083478955,
+        "parity": "odd",
+        "handedness": "L",
+        "energy": 2.126825185752584,
+        "stable": false
+      },
+      {
+        "charge_deg": 180.0,
+        "hexatic_admissible": true,
+        "psi6_residual_phase": 7.347880794884119e-16,
+        "L": 21,
+        "total_turns": 2.673762078750736,
+        "Tw": -2.6737616991652104,
+        "Wr": 0.0,
+        "Lk": -2.6737616991652104,
+        "Lk_int": -3,
+        "closure_residual": 0.32623830083478955,
+        "parity": "odd",
+        "handedness": "L",
+        "energy": 2.3024921989152958,
+        "stable": false
+      }
+    ],
+    "ground_state": {
+      "charge_deg": 120.0,
+      "hexatic_admissible": true,
+      "psi6_residual_phase": 4.898587196589413e-16,
+      "L": 8,
+      "total_turns": 1.0185760300002804,
+      "Tw": -1.0185759877143832,
+      "Wr": 0.0,
+      "Lk": -1.0185759877143832,
+      "Lk_int": -1,
+      "closure_residual": 0.01857598771438318,
+      "parity": "odd",
+      "handedness": "L",
+      "energy": 0.7915108456303145,
+      "stable": true
+    },
+    "closure_structure": {
+      "residuals": {
+        "1": 0.12732200155624362,
+        "2": 0.25464400088897227,
+        "3": 0.38196599993189656,
+        "5": 0.36339000022825796,
+        "8": 0.01857598771438318,
+        "13": 0.34481406576396023,
+        "21": 0.32623830083478955
+      },
+      "best_closure_depth": 8,
+      "best_closure_residual": 0.01857598771438318,
+      "closure_gap_factor": 6.854117450651608,
+      "strict_tol_window": [
+        0.03,
+        0.05572796314314954
+      ]
+    },
+    "robustness_scan": {
+      "regime": "strict closure (genuine framed ribbon); energy weights varied 0.1x-10x",
+      "n_samples": 400,
+      "ground_size_mode": 8,
+      "size_robustness": 1.0,
+      "ground_parity_mode": "odd",
+      "parity_robustness": 1.0,
+      "ground_handedness_mode": "L",
+      "ground_charge_mode": 120.0,
+      "charge_robustness": 1.0
+    },
+    "loose_closure_caveat": "loosening closure to tol>0.019 (admitting the poorly-closed L=1 loop, residual 0.127, parity even) changes the ground state \u2014 this is the bare-loop regime, not a genuine framed ribbon.",
+    "verdict": "CONFIRM (matter gate): the UNIQUE genuine closure is Fibonacci depth L=8 (residual 0.019, 7x better than any other depth), |Lk|=1 ODD = spin-1/2, definite handedness 'L'. Size & parity robust across 100% of the energy-weight scan (strict-closure regime).",
+    "charge_resolution": {
+      "rule": "Admissible isolated hexatic disclination <=> psi6=exp(6 i theta) single-valued <=> 6*Omega = 0 (mod 360) <=> Omega is a multiple of 60 deg.",
+      "admissibility": {
+        "90": {
+          "admissible": false,
+          "psi6_residual_phase": 3.1415926535897927
+        },
+        "120": {
+          "admissible": true,
+          "psi6_residual_phase": 4.898587196589413e-16
+        },
+        "180": {
+          "admissible": true,
+          "psi6_residual_phase": 7.347880794884119e-16
+        }
+      },
+      "admissible_charges_deg": [
+        120.0,
+        180.0
+      ],
+      "ground_charge_deg": 120.0,
+      "resolved": "FORK RESOLVED: 90 deg is NOT an admissible isolated hexatic disclination (6*90=540, psi6 -> -psi6: a string-attached half-disclination, extensive energy), so it is excluded categorically -- NOT by a tunable weight. Among the admissible {120,180} deg, Frank energy ~ Omega^2 selects 120 deg, which is ALSO the screw-aligned C3//[1,1,1] -- doubly natural.",
+      "scan_charge_robustness": 1.0
+    },
+    "tier": {
+      "Lk/closure & energy ordering": "OC",
+      "6-fold disclination admissibility (charge selection)": "OC (rests on hexatic 6-fold = IR)",
+      "ribbon=matter particle": "IR",
+      "SM quantum numbers": "RH (out of scope, V-\u00a78)"
+    }
+  }
+}

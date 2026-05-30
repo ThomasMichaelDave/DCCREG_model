@@ -1,0 +1,104 @@
+output,key,value
+A,output,A: K_A -> G_eff
+A,rho,1.0
+A,gamma,1.0
+A,analytic_beta_coeff,0.07957747154594767
+A,beta_coeff_extrapolated,0.07905015592322025
+A,beta_coeff_rel_err,0.006626443545934429
+A,convergence,<list:4>
+A,converged,True
+A,ln_d_over_a,4.0
+A,K_A_over_rhoGamma2,0.316200623692881
+A,G_eff_times_rhoGamma2,3.16254910670663
+A,validation_3D.straight_line_coeff_3D,0.07881141259090622
+A,validation_3D.straight_line_rel_err,0.009626580741499555
+A,validation_3D.quasi2D_reduction_validated,True
+A,validation_3D.screw_helix_tension_factor,1.0136265059135783
+A,validation_3D.reads,"straight-line 3D coeff = 2D value -> quasi-2D reduction is EXACT for a straight disclination line, so the gravity K_A is unchanged in 3D [OC]. The screw makes a matter ribbon's centerline helical, carrying a geometric tension factor ~1.01x (relevant to Output B's ribbon, not to gravity K_A)."
+A,tier.beta_coeff,OC
+A,tier.K_A,OC value on IR identification (K_A~beta)
+A,tier.G_eff,IR
+A,tier.3D quasi-2D reduction,OC
+A,reads,O(1)*rhoGamma^2 -> CONFIRMS K_A~beta and REFINES gravity strength; order-of-magnitude mismatch would FALSIFY the shared-parameter id. The 3D filament sum confirms the quasi-2D reduction (straight-line coeff = 2D value) and a small (~1%) screw correction.
+C,output,C: E(r) interaction law (lattice Green's function)
+C,n,512
+C,ln_form_beats_r2lnr,True
+C,ln_form_residual,0.0015967497700127183
+C,r2lnr_residual,0.03564539608170188
+C,G_slope_per_lnr,-0.08643376132867561
+C,G_slope_window_spread,0.0014670656184241702
+C,analytic_slope_per_lnr,-0.09188814923696534
+C,slope_rel_err,0.059358991922056265
+C,slope_note,"coefficient measured to ~10% (finite torus + discreteness; the asymptotic regime exceeds the torus). The ln r FORM is robust; the coefficient is approximate, not claimed beyond its window spread."
+C,E_r_coefficient_K_A_times_slope,-0.027330409240248845
+C,screening.model,(-L + m2) G = delta; m2 ~ dislocation density n_d (2D Debye relation)
+C,screening.table,<list:5>
+C,screening.law,xi = 1/kappa = sqrt(C2/m2) ~ n_d^(-1/2)  (2D Debye-Huckel)
+C,screening.validated_against,"continuum Bessel K0(kappa r); kappa_pred = sqrt(m2/C2), C2=3/2"
+C,screening.mean_kappa_rel_err,0.01744012034311758
+C,screening.tier,"OC for the screened Green's function + K0 validation + the n_d^(-1/2) law; the value of n_d (hence kappa) is an IR thermodynamic input, not fixed here."
+C,tier.lnr_form,OC (robust)
+C,tier.coefficient,"OC (~10%, finite-size limited)"
+C,tier.screening_law,"OC (Debye, ~2%); n_d input is IR"
+C,tier.defect-interaction id,IR
+C,reads,"ln r form recovered on the real lattice -> CONFIRMS the v0.6 Einstein/Newton closure (check_02) with a finite lattice coefficient; r^2 ln r at large r would FALSIFY hexatic screening (not seen). Free dislocations Debye-screen the ln r beyond xi=kappa^-1 ~ n_d^(-1/2) (validated vs K0), REFINING IV-§5.6's 'atmosphere'."
+B,output,B: defect spectrum + ground-state matter loop (decisive)
+B,model.beta_coeff,0.07905015592322025
+B,model.K_A,0.316200623692881
+B,model.ln_xi,4.0
+B,model.tol,0.1
+B,model.weights.w_tension,1.0
+B,model.weights.w_frank,1.0
+B,model.weights.w_close,1.0
+B,spectrum,<list:21>
+B,ground_state.charge_deg,120.0
+B,ground_state.hexatic_admissible,True
+B,ground_state.psi6_residual_phase,4.898587196589413e-16
+B,ground_state.L,8
+B,ground_state.total_turns,1.0185760300002804
+B,ground_state.Tw,-1.0185759877143832
+B,ground_state.Wr,0.0
+B,ground_state.Lk,-1.0185759877143832
+B,ground_state.Lk_int,-1
+B,ground_state.closure_residual,0.01857598771438318
+B,ground_state.parity,odd
+B,ground_state.handedness,L
+B,ground_state.energy,0.7915108456303145
+B,ground_state.stable,True
+B,closure_structure.residuals.1,0.12732200155624362
+B,closure_structure.residuals.2,0.25464400088897227
+B,closure_structure.residuals.3,0.38196599993189656
+B,closure_structure.residuals.5,0.36339000022825796
+B,closure_structure.residuals.8,0.01857598771438318
+B,closure_structure.residuals.13,0.34481406576396023
+B,closure_structure.residuals.21,0.32623830083478955
+B,closure_structure.best_closure_depth,8
+B,closure_structure.best_closure_residual,0.01857598771438318
+B,closure_structure.closure_gap_factor,6.854117450651608
+B,closure_structure.strict_tol_window,<list:2>
+B,robustness_scan.regime,strict closure (genuine framed ribbon); energy weights varied 0.1x-10x
+B,robustness_scan.n_samples,400
+B,robustness_scan.ground_size_mode,8
+B,robustness_scan.size_robustness,1.0
+B,robustness_scan.ground_parity_mode,odd
+B,robustness_scan.parity_robustness,1.0
+B,robustness_scan.ground_handedness_mode,L
+B,robustness_scan.ground_charge_mode,120.0
+B,robustness_scan.charge_robustness,1.0
+B,loose_closure_caveat,"loosening closure to tol>0.019 (admitting the poorly-closed L=1 loop, residual 0.127, parity even) changes the ground state — this is the bare-loop regime, not a genuine framed ribbon."
+B,verdict,"CONFIRM (matter gate): the UNIQUE genuine closure is Fibonacci depth L=8 (residual 0.019, 7x better than any other depth), |Lk|=1 ODD = spin-1/2, definite handedness 'L'. Size & parity robust across 100% of the energy-weight scan (strict-closure regime)."
+B,charge_resolution.rule,Admissible isolated hexatic disclination <=> psi6=exp(6 i theta) single-valued <=> 6*Omega = 0 (mod 360) <=> Omega is a multiple of 60 deg.
+B,charge_resolution.admissibility.90.admissible,False
+B,charge_resolution.admissibility.90.psi6_residual_phase,3.1415926535897927
+B,charge_resolution.admissibility.120.admissible,True
+B,charge_resolution.admissibility.120.psi6_residual_phase,4.898587196589413e-16
+B,charge_resolution.admissibility.180.admissible,True
+B,charge_resolution.admissibility.180.psi6_residual_phase,7.347880794884119e-16
+B,charge_resolution.admissible_charges_deg,<list:2>
+B,charge_resolution.ground_charge_deg,120.0
+B,charge_resolution.resolved,"FORK RESOLVED: 90 deg is NOT an admissible isolated hexatic disclination (6*90=540, psi6 -> -psi6: a string-attached half-disclination, extensive energy), so it is excluded categorically -- NOT by a tunable weight. Among the admissible {120,180} deg, Frank energy ~ Omega^2 selects 120 deg, which is ALSO the screw-aligned C3//[1,1,1] -- doubly natural."
+B,charge_resolution.scan_charge_robustness,1.0
+B,tier.Lk/closure & energy ordering,OC
+B,tier.6-fold disclination admissibility (charge selection),OC (rests on hexatic 6-fold = IR)
+B,tier.ribbon=matter particle,IR
+B,tier.SM quantum numbers,"RH (out of scope, V-§8)"
