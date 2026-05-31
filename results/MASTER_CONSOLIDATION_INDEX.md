@@ -12,7 +12,7 @@ the hexatic SOSF** (sim/README.md). They build on each other:
 
 > **run002** (gravity K_A + matter ground state) → **run003** (excited spectrum:
 > no doublet) → **run004** (Dirac pairing: the missing partner is inter-sublattice)
-> → **run005** (physical scales: which dimensionless ratios are input-independent).
+> → **run005** (physical scales: dimensional reduction, **B-REDUCED**).
 
 ---
 
@@ -24,7 +24,7 @@ the hexatic SOSF** (sim/README.md). They build on each other:
 | `run002_sosf_spectrum_iterated` | K_A→G_eff (A); E(r) (C); ground-state loop (B) | K_A pinned; ln r form; **spin-½ 120° L=8 ground state** | [run002](run002_sosf_spectrum_iterated/CONSOLIDATION_REPORT.md) |
 | `run003_excited_spectrum_l8` | doublet / generation tower above L=8? | **isolated singlet — no doublet, no robust multiplet** | [run003](run003_excited_spectrum_l8/CONSOLIDATION_REPORT.md) |
 | `run004_dirac_pairing` | does L↔R inter-sublattice coupling bind a Dirac pair? | **B-YES — Dirac mass = dual-sublattice coupling; axiom survives** | [run004](run004_dirac_pairing/CONSOLIDATION_REPORT.md) |
-| `run005_physical_scales` | which dimensionless ratios are input-independent? a parameter-free G–m relation? | **B-REDUCED — base scales cancel cross-gate, but J²·ln(d/a)^(−3/2) residual; no pure number** | [run005](run005_physical_scales/CONSOLIDATION_REPORT.md) |
+| `run005_physical_scales` | reduce all quantities to free inputs; is there a parameter-free cross-gate G↔m_D ratio? | **B-REDUCED — base scales cancel (dimensionally); residual $J^2\ln(d/a)^{-3/2}$, no pure number** | [run005](run005_physical_scales/CONSOLIDATION_REPORT.md) |
 
 All runs pass their validation ladder in-session (run004 adds J→0 decoupling and
 A↔B mirror invariance; run005 adds dimensional closure and known-limit recovery).
@@ -67,14 +67,18 @@ coupling (|Lk_AB|=1, reinforcing) binds them into a bonding/antibonding pair who
 **fixed-global-chirality axiom survives**; the inter-sublattice coupling **is** the
 Block V-§8 Dirac-mass mechanism. Mass magnitude ∝ J (unfixed without K_A).
 
-**Physical scales (run005).** Dimensional reduction of all sector quantities to
-**{ρ, Γ, ℓ_P, κ, n_d, J, ln(d/a)}** (units close — no hidden input) **[OC]**.
-Identifying the emergent **ℏ_eff∼ρΓℓ_P³** and **c∼Γ/ℓ_P** [IR] makes the base scales
-**cancel** in the cross-gate **(m_D/m_Planck)² = G_eff·m_D²/(ℏ_eff·c)** — but a
-residual **J²·ln(d/a)^(−3/2)** survives. **B-REDUCED:** a real reduction (and pinned
-*intra-sector* ratios — golden 3φ², charge 2.25, winding L≈8n) but **no parameter-free
-cross-gate number**; DCCREG is one O(1) geometric prefactor + an exact ln(d/a) away
-from a gravity↔mass prediction. **No SI numbers, by design.**
+**Physical scales — run005 (B-REDUCED).** Every sector quantity reduces to
+$\{\rho,\Gamma,\ell_P\}\times g(J,\ln d/a)$ ($+\kappa$ EM, $+n_d$ screening); **dimensional
+closure PASS** — no hidden input, confirming the declared free-parameter count **[OC]**.
+Two emergent scales identified **[IR]**: $\hbar_{\rm eff}\sim\rho\Gamma\ell_P^3$ and
+$c\sim(\Gamma/\ell_P)\sqrt{\ln d/a}$. Cross-gate $(m_D/m_{\rm Planck})^2\to J^2\ln(d/a)^{-3/2}$:
+the base scales cancel, **but dimensionally** (the generic property of a dimensionless
+ratio on a 3-constant basis — *not* a structural signature of sector-sharing); content
+is in the residual exponents, tier **[OC arithmetic on the [IR] reduced forms]**. **No
+parameter-free cross-gate number** — held open by the missing external $\hbar$, free $J$,
+and inexact $\ln(d/a)\approx4$. Input-independent pure numbers are **intra-sector** only
+($3\varphi^2$, charge $2.25$, $L\approx8n$). Located gap: one $O(1)$ prefactor + an exact
+$\ln(d/a)$. (No SI absolutes — by design.)
 
 ---
 
@@ -94,12 +98,15 @@ Numbers do **not** edit Blocks directly (CLAUDE.md §3.3/§3.5). Suggested, per 
 - **Block V → v0.5 "Dirac pairing"** (run004): inter-sublattice coupling = the
   Dirac-mass mechanism; moves the §8 mass [RH] → [IR]; **affirms** the I-§4
   fixed-global-chirality axiom (no Block I revision); add cross-ref V-§8 ↔ I-§13.
-- **README frontier / II-§8 / IV / V residuals "physical scales"** (run005): record
-  the reduced accounting (all sector quantities = {ρ,Γ,ℓ_P}×g(J, ln d/a); emergent
-  ℏ_eff∼ρΓℓ_P³, c∼Γ/ℓ_P); the cross-gate (m_D/m_Planck)² base scales cancel leaving
-  J²·ln(d/a)^(−3/2); DCCREG makes input-independent *intra-sector* numbers and is one
-  geometric prefactor + an exact ln(d/a) short of a parameter-free cross-gate number.
-  No SI absolutes. Tag [OC] structure / [IR] the c, ℏ_eff identifications.
+- **Block IV → v0.9 / Block V → v0.6 "physical-scale reduction"** (run005): record the
+  reduced accounting (every quantity $=\{\rho,\Gamma,\ell_P\}\times g(J,\ln d/a)$, closure
+  PASS) [OC]; the cross-gate scaling $(m_D/m_{\rm Planck})^2\to J^2\ln(d/a)^{-3/2}$ with the
+  **cancellation tagged dimensional, not structural** [OC-on-IR]; the $\hbar_{\rm eff}\sim
+  \rho\Gamma\ell_P^3$ and $c\sim\Gamma/\ell_P$ identifications **[IR]** with the cross-ref
+  that $\hbar_{\rm eff}$ presupposes the un-done soliton quantisation (V-§10 fork 2); add
+  bidirectional IV-§3a ↔ V-§9. Accounting refinement, **not** a new mechanism — residual/
+  fork sections only, no body rewrite. SM map stays [RH], fenced. *(Applied: Block IV
+  v0.9, Block V v0.6, README + frontier.)*
 
 ---
 
@@ -109,6 +116,16 @@ Numbers do **not** edit Blocks directly (CLAUDE.md §3.3/§3.5). Suggested, per 
   is ~10% (finite-torus); run003/run004 spectra are in relative units; run004's Dirac
   mass ∝ J. run005 makes this precise: absolute values would require inventing the
   free inputs — forbidden. The framework's content is the input-independent ratios.
+- **The cross-gate base-scale cancellation is dimensional, not structural.** $\{\rho,\Gamma,
+  \ell_P\}$ span $\{M,L,T\}$, so *any* dimensionless ratio loses them; the cancellation is a
+  corollary of dimensional closure, not independent evidence of the Joining. The sharing
+  shows only in the residual exponents.
+- **$\hbar_{\rm eff}$ is not a derived $\hbar$.** $\rho\Gamma\ell_P^3$ is a valid action [OC],
+  but identifying it with the defect spin $=\hbar/2$ presupposes the soliton quantisation
+  (V-§10 fork 2 / §8), which is not done. $m_{\rm Planck}$ is therefore internally defined.
+- **The cross-gate ratio is an internal scaling relation, not yet measurable.** Confronting it
+  with data needs the external-$\hbar$/SI step the run (correctly) refuses. The currently
+  input-independent predictions are the intra-sector pure numbers only.
 - **[IR] energy functional.** The ribbon/coupling functionals are interpretive; the
   closure/Lk/linking/degeneracy arithmetic and the validation rungs are [OC].
 - **[RH], fenced (V-§8):** the map to real Standard-Model quantum numbers

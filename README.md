@@ -25,8 +25,8 @@ dccreg/
 │   ├── DCCREG_fluid_substrate_foundations_v04.md   Block I  — substrate
 │   ├── DCCREG_MHD_emergence_v02.md                 Block II — MHD/EM
 │   ├── DCCREG_radiative_EM_emergent_LI_v02.md      Block III— light / Lorentz
-│   ├── DCCREG_emergent_gravity_v07.md              Block IV — gravity
-│   ├── DCCREG_emergent_matter_v02.md               Block V  — matter / fermions
+│   ├── DCCREG_emergent_gravity_v09.md              Block IV — gravity
+│   ├── DCCREG_emergent_matter_v06.md               Block V  — matter / fermions
 │   ├── DCCREG_labeling_convention_v4.md            7-sphere labeling + sim spec
 │   ├── DCCREG_sandbox_v01.md                        sandbox (RH, parallel track)
 │   └── archive/             ← superseded versions (audit trail — do not delete)
@@ -48,7 +48,7 @@ Both can run as **separate conversations / sessions** in parallel. The graduatio
 
 ## Current state
 
-Substrate → EM → MHD → light established at their stated tiers. **Gravity** (Block IV) computes to the Einstein/Newtonian 1/k² form (conditional on the hexatic identification); **matter** (Block V) realises spin-½ + automatic spin-statistics + Weyl handedness (fenced from "these are real particles"). The two gates are **joined**: they share one object — the SOSF defect spectrum — whose analytic pieces are computed (octahedral charges; coupling K_A ~ β; Fibonacci spin-selection) and whose **numeric** pieces are the simulator's job (`sim/README.md`).
+Substrate → EM → MHD → light established at their stated tiers. **Gravity** (Block IV) computes to the Einstein/Newtonian 1/k² form (conditional on the hexatic identification); **matter** (Block V) realises spin-½ + automatic spin-statistics + Weyl handedness (fenced from "these are real particles"). The two gates are **joined**: they share one object — the SOSF defect spectrum — whose analytic pieces are computed (octahedral charges; coupling K_A ~ β; Fibonacci spin-selection) and whose **numeric** pieces are the simulator's job (`sim/README.md`). **run005 (physical scales)** reduces every sector quantity to the free-input set $\{\rho,\Gamma,\ell_P\}\times g(J,\ln d/a)$ (dimensional closure PASS) and forms the cross-gate ratio $(m_D/m_{\rm Planck})^2\to J^2\ln(d/a)^{-3/2}$; the base scales cancel **dimensionally**, so the framework is one $O(1)$ geometric prefactor + an exact $\ln(d/a)$ short of a parameter-free gravity↔mass number — and its present input-independent predictions are the *intra-sector* arithmetic ($3\varphi^2$, charge $2.25$, $L\approx8n$). No SI absolutes (by design).
 
 ## Tooling
 
