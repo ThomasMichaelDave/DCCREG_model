@@ -1,0 +1,54 @@
+output,key,value
+run005,quantities.K_A.exp.rho,1
+run005,quantities.K_A.exp.Gamma,2
+run005,quantities.K_A.exp.lnda,1
+run005,quantities.K_A.tier,OC
+run005,quantities.c.exp.Gamma,1
+run005,quantities.c.exp.ellP,-1
+run005,quantities.c.exp.lnda,0.5
+run005,quantities.c.tier,IR
+run005,quantities.hbar_eff.exp.rho,1
+run005,quantities.hbar_eff.exp.Gamma,1
+run005,quantities.hbar_eff.exp.ellP,3
+run005,quantities.hbar_eff.tier,IR
+run005,quantities.m_D.exp.rho,1
+run005,quantities.m_D.exp.ellP,3
+run005,quantities.m_D.exp.J,1
+run005,quantities.m_D.exp.lnda,-1
+run005,quantities.m_D.tier,IR
+run005,quantities.G_eff.exp.rho,-1
+run005,quantities.G_eff.exp.Gamma,2
+run005,quantities.G_eff.exp.ellP,-4
+run005,quantities.G_eff.exp.lnda,1
+run005,quantities.G_eff.tier,IR
+run005,quantities.xi.exp.n_d,-0.5
+run005,quantities.xi.tier,OC
+run005,cross_gate.combination,G_eff * m_D^2 / (hbar_eff * c)  ==  (m_D/m_Planck)^2
+run005,cross_gate.exponents.lnda,-1.5
+run005,cross_gate.exponents.J,2.0
+run005,cross_gate.dimensionless,True
+run005,cross_gate.base_scales_cancel,True
+run005,cross_gate.surviving_base,<list:0>
+run005,cross_gate.surviving_dimensionless_inputs,<list:2>
+run005,cross_gate.fully_input_independent,False
+run005,cross_gate.reading,"base scales rho,Gamma,ellP CANCEL (real reduction, enabled by the emergent hbar~rho*Gamma*ellP^3 and c~Gamma/ellP); residual J^2 * lnda^(-3/2) remains -> NOT a fully input-independent pure number."
+run005,pinned_arithmetic.screw_period_3phi2.value,7.854101966249685
+run005,pinned_arithmetic.screw_period_3phi2.exact,7.854101966249685
+run005,pinned_arithmetic.screw_period_3phi2.note,levels/turn = 3 phi^2 (golden) [OC]
+run005,pinned_arithmetic.ground_closure_depth_L.value,8
+run005,pinned_arithmetic.ground_closure_depth_L.residual_8s_minus_1,0.018576030000280408
+run005,pinned_arithmetic.winding_harmonics_L.value,<list:5>
+run005,pinned_arithmetic.winding_harmonics_L.ratios_to_fundamental,<list:5>
+run005,pinned_arithmetic.charge_ratio_180_over_120.value,1.5
+run005,pinned_arithmetic.charge_ratio_180_over_120.frank_energy_ratio_sq,2.25
+run005,pinned_arithmetic.charge_ratio_180_over_120.note,octahedral Frank classes [OC group theory]
+run005,pairwise_dimensionless,<list:0>
+run005,first_principles_J.Lk_AB_elementary,1
+run005,first_principles_J.J_fixed_value,1.0
+run005,first_principles_J.tier,IR
+run005,first_principles_J.note,"J=1 = elementary mutual-helicity link (run004 Gauss integral); fixes one free input. [IR] identification, not forced."
+run005,verdict.branch,B-REDUCED
+run005,verdict.why,"REAL REDUCTION: in the cross-gate combination (m_D/m_Planck)^2 = G_eff m_D^2/(hbar_eff c) the base scales rho,Gamma,ellP ALL CANCEL — made possible by identifying the emergent hbar~rho*Gamma*ellP^3 [IR] and c~Gamma/ellP [IR]. The residual is J^2 * lnda^(-3/2): surviving dimensionless inputs ['J', 'lnda']. First-principles J=1 (elementary mutual link, run004) fixes one of these [IR], leaving only lnda(~4, not exact) and an uncomputed O(1) geometric prefactor — so the ratio is CONDITIONALLY pinned, NOT a fully input-independent pure number. Pinned PURE-arithmetic ratios DO exist (golden screw period 3*phi^2, octahedral charge ratio, winding harmonics) but they are intra-sector, not cross-gate. Per brief §3 this is B-REDUCED: inputs reduce and structure sharpens, without a parameter-free cross-gate number. We refuse to manufacture B-PINNED by declaring J,lnda fixed (brief §5)."
+run005,verdict.cross_gate_base_scales_cancel,True
+run005,verdict.cross_gate_surviving_inputs,<list:2>
+run005,verdict.first_principles_J,1.0

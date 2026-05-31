@@ -1,0 +1,155 @@
+{
+  "run005": {
+    "quantities": {
+      "K_A": {
+        "exp": {
+          "rho": 1,
+          "Gamma": 2,
+          "lnda": 1
+        },
+        "dim": [
+          1,
+          1,
+          -2,
+          0
+        ],
+        "tier": "OC"
+      },
+      "c": {
+        "exp": {
+          "Gamma": 1,
+          "ellP": -1,
+          "lnda": 0.5
+        },
+        "dim": [
+          0,
+          1,
+          -1,
+          0
+        ],
+        "tier": "IR"
+      },
+      "hbar_eff": {
+        "exp": {
+          "rho": 1,
+          "Gamma": 1,
+          "ellP": 3
+        },
+        "dim": [
+          1,
+          2,
+          -1,
+          0
+        ],
+        "tier": "IR"
+      },
+      "m_D": {
+        "exp": {
+          "rho": 1,
+          "ellP": 3,
+          "J": 1,
+          "lnda": -1
+        },
+        "dim": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "tier": "IR"
+      },
+      "G_eff": {
+        "exp": {
+          "rho": -1,
+          "Gamma": 2,
+          "ellP": -4,
+          "lnda": 1
+        },
+        "dim": [
+          -1,
+          3,
+          -2,
+          0
+        ],
+        "tier": "IR"
+      },
+      "xi": {
+        "exp": {
+          "n_d": -0.5
+        },
+        "dim": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "tier": "OC"
+      }
+    },
+    "cross_gate": {
+      "combination": "G_eff * m_D^2 / (hbar_eff * c)  ==  (m_D/m_Planck)^2",
+      "exponents": {
+        "lnda": -1.5,
+        "J": 2.0
+      },
+      "dimensionless": true,
+      "base_scales_cancel": true,
+      "surviving_base": [],
+      "surviving_dimensionless_inputs": [
+        "J",
+        "lnda"
+      ],
+      "fully_input_independent": false,
+      "reading": "base scales rho,Gamma,ellP CANCEL (real reduction, enabled by the emergent hbar~rho*Gamma*ellP^3 and c~Gamma/ellP); residual J^2 * lnda^(-3/2) remains -> NOT a fully input-independent pure number."
+    },
+    "pinned_arithmetic": {
+      "screw_period_3phi2": {
+        "value": 7.854101966249685,
+        "exact": 7.854101966249685,
+        "note": "levels/turn = 3 phi^2 (golden) [OC]"
+      },
+      "ground_closure_depth_L": {
+        "value": 8,
+        "residual_8s_minus_1": 0.018576030000280408
+      },
+      "winding_harmonics_L": {
+        "value": [
+          8,
+          16,
+          24,
+          31,
+          39
+        ],
+        "ratios_to_fundamental": [
+          1.0,
+          2.0,
+          3.0,
+          3.875,
+          4.875
+        ]
+      },
+      "charge_ratio_180_over_120": {
+        "value": 1.5,
+        "frank_energy_ratio_sq": 2.25,
+        "note": "octahedral Frank classes [OC group theory]"
+      }
+    },
+    "pairwise_dimensionless": [],
+    "first_principles_J": {
+      "Lk_AB_elementary": 1,
+      "J_fixed_value": 1.0,
+      "tier": "IR",
+      "note": "J=1 = elementary mutual-helicity link (run004 Gauss integral); fixes one free input. [IR] identification, not forced."
+    },
+    "verdict": {
+      "branch": "B-REDUCED",
+      "why": "REAL REDUCTION: in the cross-gate combination (m_D/m_Planck)^2 = G_eff m_D^2/(hbar_eff c) the base scales rho,Gamma,ellP ALL CANCEL \u2014 made possible by identifying the emergent hbar~rho*Gamma*ellP^3 [IR] and c~Gamma/ellP [IR]. The residual is J^2 * lnda^(-3/2): surviving dimensionless inputs ['J', 'lnda']. First-principles J=1 (elementary mutual link, run004) fixes one of these [IR], leaving only lnda(~4, not exact) and an uncomputed O(1) geometric prefactor \u2014 so the ratio is CONDITIONALLY pinned, NOT a fully input-independent pure number. Pinned PURE-arithmetic ratios DO exist (golden screw period 3*phi^2, octahedral charge ratio, winding harmonics) but they are intra-sector, not cross-gate. Per brief \u00a73 this is B-REDUCED: inputs reduce and structure sharpens, without a parameter-free cross-gate number. We refuse to manufacture B-PINNED by declaring J,lnda fixed (brief \u00a75).",
+      "cross_gate_base_scales_cancel": true,
+      "cross_gate_surviving_inputs": [
+        "J",
+        "lnda"
+      ],
+      "first_principles_J": 1.0
+    }
+  }
+}

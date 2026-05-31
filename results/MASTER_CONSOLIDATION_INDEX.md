@@ -11,7 +11,8 @@ The runs target the joined gravity+matter gate — the **stable-defect spectrum 
 the hexatic SOSF** (sim/README.md). They build on each other:
 
 > **run002** (gravity K_A + matter ground state) → **run003** (excited spectrum:
-> no doublet) → **run004** (Dirac pairing: the missing partner is inter-sublattice).
+> no doublet) → **run004** (Dirac pairing: the missing partner is inter-sublattice)
+> → **run005** (physical scales: which dimensionless ratios are input-independent).
 
 ---
 
@@ -23,9 +24,10 @@ the hexatic SOSF** (sim/README.md). They build on each other:
 | `run002_sosf_spectrum_iterated` | K_A→G_eff (A); E(r) (C); ground-state loop (B) | K_A pinned; ln r form; **spin-½ 120° L=8 ground state** | [run002](run002_sosf_spectrum_iterated/CONSOLIDATION_REPORT.md) |
 | `run003_excited_spectrum_l8` | doublet / generation tower above L=8? | **isolated singlet — no doublet, no robust multiplet** | [run003](run003_excited_spectrum_l8/CONSOLIDATION_REPORT.md) |
 | `run004_dirac_pairing` | does L↔R inter-sublattice coupling bind a Dirac pair? | **B-YES — Dirac mass = dual-sublattice coupling; axiom survives** | [run004](run004_dirac_pairing/CONSOLIDATION_REPORT.md) |
+| `run005_physical_scales` | which dimensionless ratios are input-independent? a parameter-free G–m relation? | **B-REDUCED — base scales cancel cross-gate, but J²·ln(d/a)^(−3/2) residual; no pure number** | [run005](run005_physical_scales/CONSOLIDATION_REPORT.md) |
 
-All runs pass their validation ladder in-session (run004 adds two new gating
-rungs: J→0 decoupling and A↔B mirror invariance).
+All runs pass their validation ladder in-session (run004 adds J→0 decoupling and
+A↔B mirror invariance; run005 adds dimensional closure and known-limit recovery).
 
 ---
 
@@ -65,6 +67,15 @@ coupling (|Lk_AB|=1, reinforcing) binds them into a bonding/antibonding pair who
 **fixed-global-chirality axiom survives**; the inter-sublattice coupling **is** the
 Block V-§8 Dirac-mass mechanism. Mass magnitude ∝ J (unfixed without K_A).
 
+**Physical scales (run005).** Dimensional reduction of all sector quantities to
+**{ρ, Γ, ℓ_P, κ, n_d, J, ln(d/a)}** (units close — no hidden input) **[OC]**.
+Identifying the emergent **ℏ_eff∼ρΓℓ_P³** and **c∼Γ/ℓ_P** [IR] makes the base scales
+**cancel** in the cross-gate **(m_D/m_Planck)² = G_eff·m_D²/(ℏ_eff·c)** — but a
+residual **J²·ln(d/a)^(−3/2)** survives. **B-REDUCED:** a real reduction (and pinned
+*intra-sector* ratios — golden 3φ², charge 2.25, winding L≈8n) but **no parameter-free
+cross-gate number**; DCCREG is one O(1) geometric prefactor + an exact ln(d/a) away
+from a gravity↔mass prediction. **No SI numbers, by design.**
+
 ---
 
 ## Proposed graduations (for the consolidation session)
@@ -83,14 +94,21 @@ Numbers do **not** edit Blocks directly (CLAUDE.md §3.3/§3.5). Suggested, per 
 - **Block V → v0.5 "Dirac pairing"** (run004): inter-sublattice coupling = the
   Dirac-mass mechanism; moves the §8 mass [RH] → [IR]; **affirms** the I-§4
   fixed-global-chirality axiom (no Block I revision); add cross-ref V-§8 ↔ I-§13.
+- **README frontier / II-§8 / IV / V residuals "physical scales"** (run005): record
+  the reduced accounting (all sector quantities = {ρ,Γ,ℓ_P}×g(J, ln d/a); emergent
+  ℏ_eff∼ρΓℓ_P³, c∼Γ/ℓ_P); the cross-gate (m_D/m_Planck)² base scales cancel leaving
+  J²·ln(d/a)^(−3/2); DCCREG makes input-independent *intra-sector* numbers and is one
+  geometric prefactor + an exact ln(d/a) short of a parameter-free cross-gate number.
+  No SI absolutes. Tag [OC] structure / [IR] the c, ℏ_eff identifications.
 
 ---
 
 ## Honest residuals carried across the runs
 
-- **No physical masses / absolute energies.** Output C's coefficient is ~10%
-  (finite-torus); run003/run004 spectra are in relative units; run004's Dirac mass
-  ∝ J. Fixing absolute scales needs the run002 **K_A** in physical units.
+- **No physical masses / absolute energies / no SI numbers.** Output C's coefficient
+  is ~10% (finite-torus); run003/run004 spectra are in relative units; run004's Dirac
+  mass ∝ J. run005 makes this precise: absolute values would require inventing the
+  free inputs — forbidden. The framework's content is the input-independent ratios.
 - **[IR] energy functional.** The ribbon/coupling functionals are interpretive; the
   closure/Lk/linking/degeneracy arithmetic and the validation rungs are [OC].
 - **[RH], fenced (V-§8):** the map to real Standard-Model quantum numbers
@@ -101,7 +119,8 @@ Numbers do **not** edit Blocks directly (CLAUDE.md §3.3/§3.5). Suggested, per 
 ```bash
 pip install -r sim/requirements.txt
 python -m sim.run                                              # run002: ladder + Outputs A/B/C
-python3 sim/checks/check_05_dirac_pairing.py results/run004_dirac_pairing   # run004
+python3 sim/checks/check_05_dirac_pairing.py results/run004_dirac_pairing    # run004
+python3 sim/checks/check_06_physical_scales.py results/run005_physical_scales # run005
 # (run003's check_04 was not pushed to this branch; its machinery is reconstructed
 #  inside check_05 and fully specified in results/run003_excited_spectrum_l8/NOTES.md)
 ```
