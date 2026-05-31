@@ -2,6 +2,8 @@
 
 This is your checklist for getting the repo onto GitHub and starting the parallel simulator work. Everything below is in the `dccreg/` folder of the bundle.
 
+> **Historical note (original bundle manifest).** The repo is long since on GitHub and the simulator work has advanced through **run005**; this file is retained as the initial-upload record. For current state see `README.md`, `docs/DCCREG_programme_README.md`, and `results/MASTER_CONSOLIDATION_INDEX.md`. The live-version entries below have been updated to match the repo.
+
 ---
 
 ## What's in the bundle (upload all of it)
@@ -16,18 +18,18 @@ This is your checklist for getting the repo onto GitHub and starting the paralle
 ### docs/ — the programme (live current versions)
 | File | Block | Version |
 |------|-------|---------|
-| `docs/DCCREG_programme_README.md` | Master handoff / map | v1.4 |
+| `docs/DCCREG_programme_README.md` | Master handoff / map | v1.7 |
 | `docs/DCCREG_fluid_substrate_foundations_v04.md` | Block I — substrate | v0.4 |
 | `docs/DCCREG_MHD_emergence_v02.md` | Block II — MHD/EM | v0.2 |
 | `docs/DCCREG_radiative_EM_emergent_LI_v02.md` | Block III — light / Lorentz | v0.2 |
-| `docs/DCCREG_emergent_gravity_v07.md` | Block IV — gravity | v0.7 |
-| `docs/DCCREG_emergent_matter_v02.md` | Block V — matter / fermions | v0.2 |
+| `docs/DCCREG_emergent_gravity_v09.md` | Block IV — gravity | v0.9 |
+| `docs/DCCREG_emergent_matter_v06.md` | Block V — matter / fermions | v0.6 |
 | `docs/DCCREG_labeling_convention_v4.md` | 7-sphere labeling + sim geometry spec | v4 |
 | `docs/DCCREG_sandbox_v01.md` | Sandbox (RH, parallel track) | v0.1 |
 
 ### docs/archive/ — superseded versions (audit trail; keep, don't delete)
-- `DCCREG_emergent_gravity_v01.md` … `v06.md` (6 files)
-- `DCCREG_emergent_matter_v01.md` (1 file)
+- `DCCREG_emergent_gravity_v01.md` … `v08.md` (8 files)
+- `DCCREG_emergent_matter_v01.md` … `v05.md` (5 files)
 
 ### sim/ — simulator (Claude Code's domain)
 | File | What it is |
